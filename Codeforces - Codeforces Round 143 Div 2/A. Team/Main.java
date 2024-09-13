@@ -1,4 +1,4 @@
-//  A. Team
+//  A. Team / 231A
 
 import java.util.*;
 import java.lang.*;
@@ -25,12 +25,27 @@ public class Main {
     }
 
     public static void solution(List<String> inputLines) {
-        for (String line : inputLines) {
-            printSolution(line.trim());
-        }
-    }
+        int willAttemptQuestion = 0;
+        int numberOfQuestions = Integer.parseInt(inputLines.remove(0));
 
-    public static void printSolution(String input) {
-        System.out.println(input);
+        for (String agreement: inputLines) {
+            agreement.trim();
+            String[] choices = agreement.split(" ");
+
+            int numberOfYes = 0;
+            for (String choice : choices) {
+                if (choice.equalsIgnoreCase("1")) {
+                    numberOfYes++;
+                }
+            }
+
+            if (numberOfYes >= 2) {
+                willAttemptQuestion++;
+            }
+        }
+
+        if (willAttemptQuestion <= numberOfQuestions) {
+            System.out.println(willAttemptQuestion);
+        }
     }
 }
