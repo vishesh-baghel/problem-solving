@@ -33,17 +33,19 @@ public class Main {
 
     public static void printSolution(String input) {
         String[] inputs = input.split(" ");
-        double n = Double.parseDouble(inputs[0]);
-        double k = Double.parseDouble(inputs[1]);
+        int n = Integer.parseInt(inputs[0]);
+        int k = Integer.parseInt(inputs[1]);
 
-        double nearestNumber = Math.floor(Math.sqrt(n));
-
-        if ((int)nearestNumber == k) {
-            System.out.println("1");
+        if (k == 1) {
+            System.out.println(n);
             return;
         }
+
         int operations = 0;
-        int x = 0;
+        while (n > 0) {
+            operations += n % k;
+            n /= k;
+        }
 
         System.out.println(operations);
     }
@@ -55,20 +57,11 @@ public class Main {
     objective: find the number of operations required to make n = 0;
 
     logic:
-    1. find square root of n
-    2. if square root matches k then operation is 1 always
-
-    5 2
-    1. 5 - 2^0 = 5 - 1 = 4
-    2. 5 - 2^2 = 5 - 4 = 0
-    ops: 2
-
-    100 3
-    1. 100 - 3^4 = 100 - 81 = 19
-    2. 19 - 3^3 = 19 - 9 = 10
-    3. 10 - 3^3 = 10 - 9 = 1
-    4. 1 - 3^0 = 1 - 1 = 0
-
+    1. we will use this formula: dividend = divisor * quotient + remainder
+    2. iterate until n becomes 0
+    3. at each step we will calculate the remainder(it is the number of substractive operations) and then,
+    4. the quotient represents the next portion that needs to be processed, which will be available
+        after dividing it again by k.
 
     */
 }
