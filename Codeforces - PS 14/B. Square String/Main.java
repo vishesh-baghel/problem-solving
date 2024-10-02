@@ -34,26 +34,20 @@ public class Main {
     public static void printSolution(String input) {
         char[] charArray = input.toCharArray();
 
-        if (charArray.length == 1) {
+        int length = charArray.length;
+        if (length % 2 != 0) {
             System.out.println("NO");
             return;
         }
 
-        int i = 0;
-        int j = 1;
-        while (i < charArray.length) {
-            if (charArray[i] != charArray[j]) {
-                j++;
-            } else {
-                break;
+        for (int i = 0; i < length / 2; i++) {
+            if (charArray[i] != charArray[(length / 2) + i]) {
+                System.out.println("NO");
+                return;
             }
         }
 
-        String pattern = input.substring(0, j);
-        String restString = input.substring(j, charArray.length);
-
-         
-
+        System.out.println("YES");
     }
 
     /*
@@ -63,10 +57,8 @@ public class Main {
     objective: identify whether a given string is square or not
 
     logic:
-    1. select the first char as the starting point for a pattern
-    2. iterate on the char array and find the index at which I find the same character
-    3. then from 0 to the found index, take a substring which is a pattern to match in the rest of the string
-    4. if I don't find it then return no otherwise yes.
+    1. we need to check if ith and n / 2 + ith character are same or not
 
+    abab
      */
 }
