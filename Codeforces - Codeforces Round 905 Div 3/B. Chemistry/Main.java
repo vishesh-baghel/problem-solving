@@ -25,13 +25,37 @@ public class Main {
     }
 
     public static void solution(List<String> inputLines) {
-        for (String line : inputLines) {
-            printSolution(line.trim());
+        int testCases = Integer.parseInt(inputLines.get(0));
+        for (int i = 1; i < (testCases * 2); i = i + 2) {
+            printSolution(inputLines.get(i), inputLines.get(i + 1));
         }
     }
 
-    public static void printSolution(String input) {
-        System.out.println(input);
+    public static void printSolution(String nAndk, String inputString) {
+        String[] inputs = nAndk.split(" ");
+        int n = Integer.parseInt(inputs[0]);
+        int k = Integer.parseInt(inputs[1]);
+
+        char[] letters = inputString.toCharArray();
+
+        Map<Character, Integer> letterCountMap = new HashMap<>();
+
+        for (int i = 0; i < letters.length; i++) {
+            letterCountMap.put(letters[i], letterCountMap.getOrDefault(letters[i], 0) + 1);
+        }
+
+        int odds = 0;
+        for (Map.Entry<Character, Integer> entry : letterCountMap.entrySet()) {
+            if (entry.getValue() % 2 != 0) {
+                odds++;
+            }
+        }
+
+        if (odds > k + 1) {
+            System.out.println("NO");
+        } else {
+            System.out.println("YES");
+        }
     }
 
     /*
@@ -40,11 +64,15 @@ public class Main {
     2. remove exactly k characters.
     3. we can reorder the characters in any order to form a palindrome.
 
+    observations:
+    1. characters are being removed from the start and end indexes in the sample inputs.
+
     objective: to remove exactly k characters from an input string and reorder the characters
     to form a palindrome.
 
     logic:
-    1. 
+    1. we need to make a frequency map to count the letters which are having odd number of occurances
+    2. if odd occurance > k + 1, then print No otherwise Yes
 
     */
 }
