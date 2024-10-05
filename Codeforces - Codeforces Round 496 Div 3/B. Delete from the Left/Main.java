@@ -32,16 +32,6 @@ public class Main {
         int i = firstString.length() - 1;
         int j = secondString.length() - 1;
 
-        if (firstString.charAt(i) != secondString.charAt(j)) {
-            System.out.println(firstString.length() + secondString.length());
-            return;
-        }
-
-        if (firstString.equals(secondString)) {
-            System.out.println("0");
-            return;
-        }
-
         int sameCharsCount = 0;
         while (i >= 0 && j >= 0) {
             if (firstString.charAt(i) == secondString.charAt(j)) {
