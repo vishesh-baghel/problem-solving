@@ -25,12 +25,33 @@ public class Main {
     }
 
     public static void solution(List<String> inputLines) {
-        for (String line : inputLines) {
-            printSolution(line.trim());
+        int testCases = Integer.parseInt(inputLines.get(0));
+        for (int i = 1; i < testCases; i++) {
+            printSolution(inputLines.get(i));
         }
     }
 
     public static void printSolution(String input) {
         System.out.println(input);
     }
+
+    /*
+    constraints:
+    1. inclusive of n and exactly once permutations
+    2. n is always even
+    3. a != b
+
+    observations:
+    1.
+
+    objective: print any permutation such that min of left half is equal to max of right half otherwise -1
+    if multiple answers, then print any of them
+
+    logic:
+    1.
+
+    6 1 3
+    perm: 1 2 4 3 5 6
+
+    */
 }
