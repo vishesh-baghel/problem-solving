@@ -1,4 +1,4 @@
-//  C. Word on the Paper
+//  C. Move Brackets
 
 import java.util.*;
 import java.lang.*;
@@ -25,24 +25,12 @@ public class Main {
     }
 
     public static void solution(List<String> inputLines) {
-        int inputLength = Integer.parseInt(inputLines.get(0)) * 8;
-        for (int i = 1; i < inputLength - 1; i = i + 8) {
-            printSolution(inputLines.subList(i, i + 8));
+        for (String line : inputLines) {
+            printSolution(line.trim());
         }
     }
 
-    public static void printSolution(List<String> lines) {
-        for (String line : lines) {
-            String[] letters = line.split("");
-            for (String letter : letters) {
-                if (!letter.equals(".")) {
-                    System.out.print(letter);
-                }
-            }
-        }
-
-        System.out.println("");
+    public static void printSolution(String input) {
+        System.out.println(input);
     }
-
-    
 }
